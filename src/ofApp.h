@@ -65,6 +65,7 @@ private:
     void setupTimeMeasurment();
     void setupPanels();
     void setupListeners();
+    void setupSoundStream();
     
     void showKeyboardShortcuts();
     void showErrorMessage(string message);
@@ -79,6 +80,25 @@ private:
     shared_ptr<TextModal> mText;
     string queuedErrorMessage;
     
+public:
+    
+    // SoundStream Stuff
+    
+    void audioIn(ofSoundBuffer & input);
+
+    vector <float> left;
+    vector <float> right;
+    vector <float> volHistory;
+    
+    int     bufferCounter;
+    int     drawCounter;
+    
+    float smoothedVol;
+    float scaledVol;
+    
+    ofSoundStream soundStream;
+    ofSoundBuffer mono;
+
 };
 
 

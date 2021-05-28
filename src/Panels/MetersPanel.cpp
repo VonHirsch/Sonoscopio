@@ -24,6 +24,7 @@
 #include "AnalysisDataSaver.h"
 #include "OscSender.h"
 #include "PanelsBridge.h"
+#include "StreamManager.h"
 
 #pragma mark - Core Funcs
 
@@ -46,6 +47,7 @@ void MetersPanel::setupSingletons(){
     AnalysisDataSaver::getInstance().setMetersPanelPtr(this);
     OscSender::getInstance().setMetersPanelPtr(this);
     PanelsBridge::getInstance().setMetersPanelPtr(this);
+    StreamManager::getInstance().setMetersPanelPtr(this);
 }
 
 void MetersPanel::update(){

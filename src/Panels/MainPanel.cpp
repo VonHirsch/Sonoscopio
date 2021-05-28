@@ -20,6 +20,7 @@
 #include "MainPanel.h"
 #include "SettingsManager.h"
 #include "FileManager.h"
+#include "StreamManager.h"
 #include "AnalysisDataSaver.h"
 #include "OscSender.h"
 #include "PanelsBridge.h"
@@ -40,6 +41,7 @@ void MainPanel::setupSingletons(){
     SettingsManager::getInstance().setMainPanelPtr(this);
     FileManager::getInstance().setMainPanelPtr(this);
     PanelsBridge::getInstance().setMainPanelPtr(this);
+    StreamManager::getInstance().setMainPanelPtr(this);
 }
 
 void MainPanel::update(){
@@ -99,6 +101,10 @@ void MainPanel::setClicksEnabled(bool enabled) {
 
 void MainPanel::openFileDialog(){
     FileManager::getInstance().openFileDialog();
+}
+
+void MainPanel::setupStream(){
+    StreamManager::getInstance().setupStream();
 }
 
 void MainPanel::saveAllSettings(){

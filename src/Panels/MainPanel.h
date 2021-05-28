@@ -54,6 +54,7 @@ public:
     void updateCurrentSettings();
 
     void openFileDialog();
+    void setupStream();
     
     void applySettings(int fps, string host, int port);
     
@@ -66,6 +67,9 @@ public:
     
     void setAudioFileInfo(string filename, string path,  float duration, int samplerate, int channels, int durationInFrames, int framerate){
         fileInfoView.setAudioFileInfo(filename, path, duration, samplerate, channels, durationInFrames, framerate);
+    }
+    void setAudioFileInfo(string simpleStr){
+        fileInfoView.setAudioFileInfo(simpleStr);
     }
     
 private:

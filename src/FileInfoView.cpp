@@ -33,3 +33,7 @@ void FileInfoView::setAudioFileInfo(string fileName, string path,  float duratio
     " | Channels: " + ofToString(channels) +
     " | Frames: " + ofToString(durationInFrames) + " at " + ofToString(framerate) + "fps" + " | Path: " + path;
 }
+
+void FileInfoView::setAudioFileInfo(string simpleStr){
+    infoStr = simpleStr;
+}

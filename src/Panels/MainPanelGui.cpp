@@ -49,6 +49,8 @@ void MainPanelGui::createComponents(){
     
     component = GuiFactory::createButton(OPEN_FILE_LABEL, this, &MainPanelGui::onButtonEvent);
     _components.push_back(component);
+    component = GuiFactory::createButton(STREAMING_LABEL, this, &MainPanelGui::onButtonEvent);
+    _components.push_back(component);
     component = GuiFactory::createButton(SAVE_SETTINGS_LABEL, this, &MainPanelGui::onButtonEvent);
     _components.push_back(component);
     component = GuiFactory::createButton(CONFIG_LABEL, this, &MainPanelGui::onButtonEvent);
@@ -57,7 +59,8 @@ void MainPanelGui::createComponents(){
     _components.push_back(component);
     gSendOscToggle = GuiFactory::createToggle(SEND_OSC_LABEL, false, this, &MainPanelGui::onButtonEvent);
     _components.push_back(gSendOscToggle);
- 
+
+
 }
 
 void MainPanelGui::adjustComponentsSize(){
@@ -84,6 +87,8 @@ void MainPanelGui::onButtonEvent(ofxDatGuiButtonEvent e){
         mainPanelPtr->openFileDialog();
     }else if (label == RENDER_ANALYSIS_LABEL){
         showSaverMenu();
+    }else if (label == STREAMING_LABEL){
+        mainPanelPtr->setupStream();
     }
 }
 void MainPanelGui::onTextInputEvent(ofxDatGuiTextInputEvent e){}

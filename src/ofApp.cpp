@@ -19,10 +19,13 @@
 #include "ofApp.h"
 #include "AnalysisDataSaver.h"
 #include "FileManager.h"
+#include "StreamManager.h"
 
 ofEvent<string> ofApp::errorEvent = ofEvent<string>();
 
 #pragma mark - Core funcs
+
+int bufferSize = 1024; // metersPanel.getBufferSize();
 
 void ofApp::setup(){
     
@@ -33,6 +36,50 @@ void ofApp::setup(){
     setupModals();
 
     setFrameRate(INIT_FPS);
+    
+    setupSoundStream();
+    
+}
+
+void ofApp::setupSoundStream(){
+        
+    soundStream.printDeviceList();
+        
+    left.assign(bufferSize, 0.0);
+    right.assign(bufferSize, 0.0);
+    volHistory.assign(400, 0.0);
+    
+    bufferCounter    = 0;
+    drawCounter        = 0;
+    smoothedVol     = 0.0;
+    scaledVol        = 0.0;
+
+    ofSoundStreamSettings settings;
+
+    auto devices = soundStream.getMatchingDevices("default");
+    if(!devices.empty()){
+        settings.setInDevice(devices[0]);
+    }
+
+    settings.setInListener(this);
+    settings.sampleRate = 44100;
+    settings.numOutputChannels = 0;
+    settings.numInputChannels = 2;
+    settings.bufferSize = bufferSize;
+    soundStream.setup(settings);
+    
+}
+
+//--------------------------------------------------------------
+void ofApp::audioIn(ofSoundBuffer & input){
+
+    if (metersPanel.getEnabled()){
+        TS_START("AUDIO-ANALYSIS");
+        input.copyTo(mono, input.getNumFrames(), 1, 0, false);
+        metersPanel.analyzeBuffer(mono);
+        TS_STOP("AUDIO-ANALYSIS");
+    }
+
 }
 
 void ofApp::update(){
@@ -43,6 +90,14 @@ void ofApp::update(){
     string windowTitle = "Sonoscopio";
     if (FileManager::getInstance().isFileLoaded()){
         windowTitle += " - " + FileManager::getInstance().getBaseName();
+    }
+    if (StreamManager::getInstance().isStreaming()){
+        windowTitle += " - Streaming";
+        
+        // use isStreaming in audioIn to analyze audio
+        
+        // create a new panel / gui config specifically for streaming.  activate and update it draw like the other panels
+        
     }
     if (ofGetFrameRate() < (mainPanel.getSettingsFrameRate() - 10)) {
         windowTitle += " | " + ofToString(ofGetFrameRate(),2);
