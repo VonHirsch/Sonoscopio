@@ -122,6 +122,7 @@
 		B3FD348A213DD25300B30C17 /* OscSender.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B3FD3488213DD25300B30C17 /* OscSender.cpp */; };
 		B3FD3493213EE77700B30C17 /* View.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B3FD3491213EE77700B30C17 /* View.cpp */; };
 		C4782ECC372420ACE0615B74 /* OscPrintReceivedElements.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BC8881B3C8C0A1C45F042E7A /* OscPrintReceivedElements.cpp */; };
+		E05649FF266344A500B71477 /* ofxTLStreamGraph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E05649FE266344A500B71477 /* ofxTLStreamGraph.cpp */; };
 		E09A47412660B64A00D30A19 /* StreamManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E09A473F2660B64A00D30A19 /* StreamManager.cpp */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1D0A3A1BDC003C02F2 /* main.cpp */; };
@@ -610,6 +611,8 @@
 		C6937888E126BADC8777423B /* OscTypes.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = OscTypes.h; path = ../../../addons/ofxOsc/libs/oscpack/src/osc/OscTypes.h; sourceTree = SOURCE_ROOT; };
 		D9BFFBBF4CC43DEE890B3C3E /* OscTypes.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = OscTypes.cpp; path = ../../../addons/ofxOsc/libs/oscpack/src/osc/OscTypes.cpp; sourceTree = SOURCE_ROOT; };
 		DF49D76C45D5DB505A234880 /* ofxOscMessage.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxOscMessage.cpp; path = ../../../addons/ofxOsc/src/ofxOscMessage.cpp; sourceTree = SOURCE_ROOT; };
+		E05649FD266344A500B71477 /* ofxTLStreamGraph.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxTLStreamGraph.h; sourceTree = "<group>"; };
+		E05649FE266344A500B71477 /* ofxTLStreamGraph.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTLStreamGraph.cpp; sourceTree = "<group>"; };
 		E09A473F2660B64A00D30A19 /* StreamManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = StreamManager.cpp; path = Panels/StreamManager.cpp; sourceTree = "<group>"; };
 		E09A47402660B64A00D30A19 /* StreamManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = StreamManager.h; path = Panels/StreamManager.h; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
@@ -1723,6 +1726,15 @@
 			name = algorithms;
 			sourceTree = "<group>";
 		};
+		E05649FC2663447200B71477 /* CustomTimeline */ = {
+			isa = PBXGroup;
+			children = (
+				E05649FD266344A500B71477 /* ofxTLStreamGraph.h */,
+				E05649FE266344A500B71477 /* ofxTLStreamGraph.cpp */,
+			);
+			name = CustomTimeline;
+			sourceTree = "<group>";
+		};
 		E1AD38C5F775F42C90542E37 /* src */ = {
 			isa = PBXGroup;
 			children = (
@@ -1758,6 +1770,7 @@
 		E4B69E1C0A3A1BDC003C02F2 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				E05649FC2663447200B71477 /* CustomTimeline */,
 				AE803632C8979292003FC2CF /* AnalysisDataSaver.cpp */,
 				3EC1427CE6C0D0441861140B /* AnalysisDataSaver.h */,
 				B3003FD22270BCF300216367 /* AvailableAlgorithms.h */,
@@ -1944,6 +1957,7 @@
 				329D8C3F749A794D650258B2 /* AnalysisDataSaver.cpp in Sources */,
 				B3003FCB226F996A00216367 /* ofxAABaseAlgorithm.cpp in Sources */,
 				B3712F372135E8E3007BA046 /* ofxEasingLinear.cpp in Sources */,
+				E05649FF266344A500B71477 /* ofxTLStreamGraph.cpp in Sources */,
 				B3712F932136F733007BA046 /* ofxTLNotes.cpp in Sources */,
 				B3712FA62136F733007BA046 /* ofxTLSwitches.cpp in Sources */,
 				B3712FAD2136F7DE007BA046 /* kiss_fftr.c in Sources */,

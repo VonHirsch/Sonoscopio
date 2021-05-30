@@ -21,12 +21,12 @@ void TimelineView::setup(int x, int y, int w, int h) {
 void TimelineView::update(){}
 void TimelineView::draw(){
     View::draw();
-    if (audioTrack != NULL && audioTrack->isSoundLoaded()){
+    //if (audioTrack->isSoundLoaded()){
         if(timeline.getCurrentPageName() == PAGE_TRACKS_NAME){
-            audioTrack->drawWaveforms();
+            if (audioTrack != NULL) audioTrack->drawWaveforms();
         }
         timeline.draw(true, false);
-    }
+    //}
 }
 
 void TimelineView::resize(int x, int y, int width, int height){
@@ -118,7 +118,10 @@ void TimelineView::setupStreamingTimeline() {
     ofxTimeline::removeCocoaMenusFromGlut("Audio Waveform Example");
  
     timeline.setWorkingFolder("X"); //On purpose.
+    
+    // "PAGE_AUDIO_NAME" is referenced a few other places for special handling of the "audio" page
     timeline.setup(PAGE_AUDIO_NAME);///<--tweaked SETUP
+    //timeline.setup(); //<-stock SETUP
     
     timeline.setFrameRate(_frameRate);
     timeline.setAutosave(false);
@@ -221,6 +224,12 @@ void TimelineView::addTrackToTimeline(string name, TrackType type){
         case NOTES:
             timeline.addNotes(name);
             break;
+        case LFO:
+            timeline.addLFO(name, ofRange(0, 1));
+            break;
+        case STREAM_GRAPH:
+            timeline.addStreamGraph(name, ofRange(0, 1));
+            break;
         default:
             break;
     }
@@ -236,6 +245,10 @@ void TimelineView::addTrackToTimelineWithStringType(string name, string stringTy
         addTrackToTimeline(name, SWITCHES);
     } else if(stringType==NOTES_STRING){
         addTrackToTimeline(name, NOTES);
+    } else if(stringType==LFO_STRING){
+        addTrackToTimeline(name, LFO);
+    } else if(stringType==STREAM_GRAPH_STRING){
+        addTrackToTimeline(name, STREAM_GRAPH);
     } else {
         ofLogError() << "Wrong track Type";
     }
