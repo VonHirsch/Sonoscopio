@@ -21,7 +21,7 @@ void TimelineView::setup(int x, int y, int w, int h) {
 void TimelineView::update(){}
 void TimelineView::draw(){
     View::draw();
-    if (audioTrack->isSoundLoaded()){
+    if (audioTrack != NULL && audioTrack->isSoundLoaded()){
         if(timeline.getCurrentPageName() == PAGE_TRACKS_NAME){
             audioTrack->drawWaveforms();
         }
@@ -109,6 +109,45 @@ void TimelineView::setupTimeline(string audiofile) {
     updateHeight();
 }
 
+void TimelineView::setupStreamingTimeline() {
+    
+    timeline.stop();
+    timeline.setCurrentTimeSeconds(0.0);
+    timeline.reset();
+        
+    ofxTimeline::removeCocoaMenusFromGlut("Audio Waveform Example");
+ 
+    timeline.setWorkingFolder("X"); //On purpose.
+    timeline.setup(PAGE_AUDIO_NAME);///<--tweaked SETUP
+    
+    timeline.setFrameRate(_frameRate);
+    timeline.setAutosave(false);
+    timeline.setOffset(ofVec2f(_x, _y));
+    
+    timeline.setLoopType(OF_LOOP_NONE);
+    timeline.setBPM(TL_DEFAULT_INIT_BPM);
+    timeline.setShowBPMGrid(false);
+    
+    timeline.addAudioTrack("Audio", "Streaming");
+    
+    timeline.setTimecontrolTrack("Audio");
+    timeline.setDurationInSeconds(60, false);
+    
+    //timeline.setDurationInSeconds(timeline.getAudioTrack("Audio")->getDuration(), false);
+    //audioTrack = timeline.getAudioTrack("Audio");
+    
+    audioTrack = NULL;
+    
+    timeline.addPage(PAGE_TRACKS_NAME);
+    timeline.setCurrentPage(PAGE_TRACKS_NAME);
+    timeline.setShowPageTabs(false); //->modify if more pages are needed
+    timeline.setFootersHidden(true);
+    
+    //timeline.resetInOutTrack();//for using in_out xml file
+    timeline.setInOutRange(ofRange(0.0, 1.0));//always start with in/out at the sides, ignores xml file
+    timeline.setWidth(_w);
+    updateHeight();
+}
 
 void TimelineView::openAudioFile(string filename){
     timeline.stop();

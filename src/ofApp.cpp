@@ -73,6 +73,7 @@ void ofApp::setupSoundStream(){
 //--------------------------------------------------------------
 void ofApp::audioIn(ofSoundBuffer & input){
 
+    //if (StreamManager::getInstance().isStreaming()){    
     if (metersPanel.getEnabled()){
         TS_START("AUDIO-ANALYSIS");
         input.copyTo(mono, input.getNumFrames(), 1, 0, false);

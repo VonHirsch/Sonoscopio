@@ -50,6 +50,7 @@ public:
     void updateHeight();
     
     void setupTimeline(string audiofile);
+    void setupStreamingTimeline();
     bool keyPressed(int key);
     
     void saveTracksDataToFolder();
@@ -75,7 +76,7 @@ public:
     
     void openAudioFile(string filename);
     bool isSoundLoaded(){
-        return audioTrack->isSoundLoaded();
+        return audioTrack != NULL && audioTrack->isSoundLoaded();
     }
 
     void togglePlay(){ timeline.togglePlay(); }

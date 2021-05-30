@@ -59,6 +59,10 @@ public:
         timelineView.openAudioFile(filename);
     }
     
+    void setupStreaming(){
+        timelineView.setupStreamingTimeline();
+    }
+    
     void addKeyframeInFocusedTrack(){
         timelineView.addKeyframeInFocusedTrack();
     }

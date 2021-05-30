@@ -17,9 +17,11 @@ StreamManager::StreamManager(){
 
 void StreamManager::setupStream(){
     
+    timelinePanelPtr->setupStreaming();
+    
     bIsStreaming = true;
     mainPanelPtr->setAudioFileInfo("Streaming Mode");
-//    timelinePanelPtr->setEnabled(true);
+    timelinePanelPtr->setEnabled(true);
     metersPanelPtr->setEnabled(true);
 
     metersPanelPtr->resetAnalyzer(samplerate);

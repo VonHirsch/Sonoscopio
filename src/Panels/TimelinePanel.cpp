@@ -20,6 +20,7 @@
 #include "ofApp.h"
 #include "SettingsManager.h"
 #include "FileManager.h"
+#include "StreamManager.h"
 #include "AnalysisDataSaver.h"
 #include "OscSender.h"
 #include "PanelsBridge.h"
@@ -38,9 +39,11 @@ void TimelinePanel::setup(int x, int y, int w, int h){
 void TimelinePanel::setupSingletons(){
     SettingsManager::getInstance().setTimelinePanelPtr(this);
     FileManager::getInstance().setTimelinePanelPtr(this);
+    StreamManager::getInstance().setTimelinePanelPtr(this);
     AnalysisDataSaver::getInstance().setTimelinePanelPtr(this);
     OscSender::getInstance().setTimelinePanelPtr(this);
     PanelsBridge::getInstance().setTimelinePanelPtr(this);
+    
 }
 
 void TimelinePanel::update(){

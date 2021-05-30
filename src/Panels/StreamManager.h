@@ -29,12 +29,9 @@ public:
     void setMetersPanelPtr(MetersPanel* panelPtr){
         metersPanelPtr = panelPtr;
     }
-    
-    // I don't think we'll need this for streaming?
-    //
-    //    void setTimelinePanelPtr(TimelinePanel* panelPtr){
-    //        timelinePanelPtr = panelPtr;
-    //    }
+    void setTimelinePanelPtr(TimelinePanel* panelPtr){
+        timelinePanelPtr = panelPtr;
+    }
     
     bool isStreaming(){return bIsStreaming;}
                 
@@ -48,7 +45,7 @@ private:
     
     MainPanel* mainPanelPtr;
     MetersPanel* metersPanelPtr;
-//    TimelinePanel* timelinePanelPtr;
+    TimelinePanel* timelinePanelPtr;
 
 };
 
