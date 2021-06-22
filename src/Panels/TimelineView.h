@@ -24,7 +24,7 @@
 #define NOTES_STRING "Notes"
 #define LFO_STRING "LFO2"
 #define STREAM_GRAPH_STRING "Stream"
-
+	
 
 enum TrackType {
     CURVES,

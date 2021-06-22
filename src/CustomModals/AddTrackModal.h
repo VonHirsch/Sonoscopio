@@ -37,5 +37,5 @@ private:
     string selectedTrackName;
     string selectedTrackType;
     
-    const vector<string> options = {CURVES_STRING, BANGS_STRING, SWITCHES_STRING, NOTES_STRING};
+    const vector<string> options = {CURVES_STRING, BANGS_STRING, SWITCHES_STRING, NOTES_STRING, LFO_STRING, STREAM_GRAPH_STRING};
 };

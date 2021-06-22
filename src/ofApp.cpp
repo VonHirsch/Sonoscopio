@@ -76,10 +76,16 @@ void ofApp::audioIn(ofSoundBuffer & input){
     //if (StreamManager::getInstance().isStreaming()){    
     if (metersPanel.getEnabled()){
         TS_START("AUDIO-ANALYSIS");
+        // convert sterio to mono
         input.copyTo(mono, input.getNumFrames(), 1, 0, false);
+        // send for analysis
         metersPanel.analyzeBuffer(mono);
         TS_STOP("AUDIO-ANALYSIS");
     }
+    
+    
+    // TODO LBH - If streaming, send the StreamGraph a new copy of the buffer
+    
 
 }
 

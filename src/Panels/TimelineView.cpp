@@ -21,12 +21,13 @@ void TimelineView::setup(int x, int y, int w, int h) {
 void TimelineView::update(){}
 void TimelineView::draw(){
     View::draw();
-    //if (audioTrack->isSoundLoaded()){
-        if(timeline.getCurrentPageName() == PAGE_TRACKS_NAME){
-            if (audioTrack != NULL) audioTrack->drawWaveforms();
-        }
-        timeline.draw(true, false);
-    //}
+
+    if(timeline.getCurrentPageName() == PAGE_TRACKS_NAME){
+        if (audioTrack != NULL) audioTrack->drawWaveforms();
+        //TODO LBH Draw Stream Graph here
+    }
+    timeline.draw(true, false);
+
 }
 
 void TimelineView::resize(int x, int y, int width, int height){

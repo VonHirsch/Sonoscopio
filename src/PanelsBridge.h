@@ -37,7 +37,6 @@ public:
         metersPanelPtr = panelPtr;
     }
     
-private:
     PanelsBridge();
     PanelsBridge(PanelsBridge const& copy);
     PanelsBridge& operator=(PanelsBridge const& copy);
